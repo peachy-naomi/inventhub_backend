@@ -1,18 +1,11 @@
 import express from "express";
 import cors from "cors";
 import logger from "morgan";
+import { CORS } from "./lib/config.js";
 
 const server = express();
 
-const corsOptions = {
-  origin: "*",
-  methods: "GET, POST, DELETE, PUT, PATCH",
-  allowedheaders: "Content-Type, Authorization",
-  credentials: false,
-  optionSuccessStatus: 200,
-};
-
-server.use(cors(corsOptions));
+server.use(cors(CORS));
 server.use(logger("dev"));
 server.use(express.json());
 
