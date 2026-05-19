@@ -3,6 +3,7 @@ import cors from "cors";
 import logger from "morgan";
 import { PORT } from "./config.js";
 import { supabase } from "./db.js";
+import ProductRouter from "./routes/product.route.js";
 
 const server = express();
 
@@ -24,6 +25,8 @@ server.get("/", async (req, res) => {
     .status(200)
     .json({ message: "Welcome to the inventory management system API" });
 });
+
+server.use("/api/v1/Products/", ProductRouter)
 
 server.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
